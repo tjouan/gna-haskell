@@ -7,9 +7,6 @@ findRepos :: [Char] -> IO [FilePath]
 findRepos path = globDir1 (compile "**/.git") path
 
 main = do
-  progName <- getProgName
   args <- getArgs
-  putStrLn progName
-  print args
 
-  findRepos ".."
+  findRepos (args !! 0)
