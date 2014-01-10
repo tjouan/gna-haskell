@@ -3,7 +3,8 @@
 import System.Environment
 import System.FilePath.Glob
 
-findRepos p = globDir1 (compile "**/.git") p
+findRepos :: [Char] -> IO [FilePath]
+findRepos path = globDir1 (compile "**/.git") path
 
 main = do
   progName <- getProgName
