@@ -8,5 +8,6 @@ findRepos path = globDir1 (compile "**/.git") path
 
 main = do
   args <- getArgs
+  repos <- findRepos $ args !! 0
 
-  findRepos $ args !! 0
+  putStrLn $ show repos
