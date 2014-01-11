@@ -2,7 +2,7 @@
 
 import Data.List
 import System.Environment (getArgs)
-import System.FilePath.Glob
+import System.FilePath.Glob (compile, globDir1)
 
 
 dispatch :: [(String, [String] -> IO ())]
