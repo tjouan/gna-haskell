@@ -14,3 +14,9 @@ Dir["#{ENV['HOME']}/tmp/**/.git"]
 
 `discover' action that find all repos
   get their path, origin and generate a config (to clone them all later)
+
+
+Similar project
+---------------
+
+https://github.com/jwiegley/git-all (haskell)
