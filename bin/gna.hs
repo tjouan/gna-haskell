@@ -3,6 +3,11 @@
 import Data.List
 import System.Environment (getArgs)
 import System.FilePath.Glob (compile, globDir1)
+import System.IO (appendFile)
+
+
+rcFilePath :: String
+rcFilePath = ".gna.rc"
 
 
 dispatch :: [(String, [String] -> IO ())]
@@ -23,6 +28,7 @@ discover :: [String] -> IO ()
 discover [path] = do
   repos <- findRepos path
   putStrLn $ show repos
+  appendFile rcFilePath $ show repos ++ "\n"
 
 
 list :: [String] -> IO ()
