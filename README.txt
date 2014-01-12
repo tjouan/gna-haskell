@@ -20,3 +20,12 @@ Similar project
 ---------------
 
 https://github.com/jwiegley/git-all (haskell)
+
+
+Haskell doc
+-----------
+
+http://learnyouahaskell.com/
+http://stackoverflow.com/questions/3077866/large-scale-design-in-haskell
+http://stackoverflow.com/questions/6609643/haskell-library-to-manipulate-a-git-repo (git)
+https://github.com/wlangstroth/haskell-samples
