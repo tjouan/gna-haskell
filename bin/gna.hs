@@ -40,4 +40,4 @@ check [] = putStrLn "check"
 
 
 findRepos :: [Char] -> IO [FilePath]
-findRepos path = globDir1 (compile "**/.git") path
+findRepos = globDir1 $ compile "**/.git"
