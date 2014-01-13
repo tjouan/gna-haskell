@@ -38,5 +38,5 @@ check :: [String] -> IO ()
 check [] = putStrLn "check"
 
 
-findRepos :: [Char] -> IO [FilePath]
+findRepos :: String -> IO [FilePath]
 findRepos = globDir1 $ compile "**/.git"
