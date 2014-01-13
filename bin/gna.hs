@@ -1,6 +1,5 @@
 #!/usr/bin/env runhaskell
 
-import Data.List
 import System.Environment (getArgs)
 import System.FilePath.Glob (compile, globDir1)
 import System.IO (appendFile)
