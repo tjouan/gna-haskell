@@ -26,9 +26,7 @@ main = do
 discover :: [String] -> IO ()
 discover [path] = do
   repos <- findRepos path
-  putStrLn $ show repos
-  appendFile rcFilePath $ show repos ++ "\n"
-
+  saveRCFile $ show repos ++ "\n"
 
 list :: [String] -> IO ()
 list [] = putStrLn "list"
@@ -40,3 +38,6 @@ check [] = putStrLn "check"
 
 findRepos :: String -> IO [FilePath]
 findRepos = globDir1 $ compile "**/.git"
+
+saveRCFile :: String -> IO ()
+saveRCFile content = writeFile rcFilePath content
