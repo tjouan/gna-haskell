@@ -33,9 +33,6 @@ check :: [String] -> IO ()
 check [] = putStrLn "check"
 
 
-findRepos :: String -> IO [FilePath]
-findRepos = globDir1 $ compile "**/.git"
-
 rcFilePath :: IO String
 rcFilePath = do
   home <- getEnv "HOME"
@@ -45,3 +42,6 @@ saveRCFile :: String -> IO ()
 saveRCFile content = do
   path <- rcFilePath
   writeFile path content
+
+findRepos :: String -> IO [FilePath]
+findRepos = globDir1 $ compile "**/.git"
