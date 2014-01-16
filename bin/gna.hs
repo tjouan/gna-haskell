@@ -25,7 +25,7 @@ main = do
 discover :: [String] -> IO ()
 discover [path] = do
   repos <- findRepos path
-  saveRCFile $ show repos ++ "\n"
+  saveRCFile $ unlines repos
 
 list :: [String] -> IO ()
 list [] = putStrLn "list"
