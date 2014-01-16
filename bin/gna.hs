@@ -27,7 +27,7 @@ discover [path] = do
   saveRCFile $ unlines repos
 
 list :: [String] -> IO ()
-list [] = putStrLn "list"
+list [] = rcFilePath >>= \p -> readFile p >>= \c -> putStr c
 
 check :: [String] -> IO ()
 check [] = putStrLn "check"
