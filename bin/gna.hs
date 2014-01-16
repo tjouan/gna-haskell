@@ -8,7 +8,6 @@ import System.IO (appendFile)
 rcFileName :: String
 rcFileName = ".gna.rc"
 
-
 dispatch :: [(String, [String] -> IO ())]
 dispatch = [
   ("discover",  discover),
