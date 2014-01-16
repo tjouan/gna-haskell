@@ -39,7 +39,7 @@ findRepos = globDir1 $ compile "**/.git"
 rcFilePath :: IO String
 rcFilePath = do
   home <- getEnv "HOME"
-  return (home ++ "/" ++ rcFileName)
+  return $ home ++ "/" ++ rcFileName
 
 saveRCFile :: String -> IO ()
 saveRCFile content = do
