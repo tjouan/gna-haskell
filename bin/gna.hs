@@ -27,7 +27,7 @@ discover [path] = do
   saveRCFile $ unlines repos
 
 list :: [String] -> IO ()
-list [] = rcFilePath >>= \p -> readFile p >>= \c -> putStr c
+list [] = rcFile >>= \rc -> putStr rc
 
 check :: [String] -> IO ()
 check [] = putStrLn "check"
@@ -37,6 +37,9 @@ rcFilePath :: IO String
 rcFilePath = do
   home <- getEnv "HOME"
   return $ home ++ "/" ++ rcFileName
+
+rcFile :: IO String
+rcFile = rcFilePath >>= \p -> readFile p
 
 saveRCFile :: String -> IO ()
 saveRCFile content = do
