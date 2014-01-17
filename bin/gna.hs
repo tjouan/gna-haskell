@@ -55,3 +55,7 @@ rcRepos = rcFile >>= \rc -> return $ lines rc
 
 findRepos :: String -> IO [FilePath]
 findRepos = globDir1 $ compile "**/.git"
+
+
+gitRemoveSuffix :: String -> String
+gitRemoveSuffix path = reverse $ drop 4 $ reverse path
