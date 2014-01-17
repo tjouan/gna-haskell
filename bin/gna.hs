@@ -24,7 +24,7 @@ main = do
 discover :: [String] -> IO ()
 discover [path] = do
   repos <- findRepos path
-  rcSaveRepos repos
+  rcSaveRepos $ map gitRemoveSuffix repos
 
 list :: [String] -> IO ()
 list [] = rcRepos >>= \rs -> mapM_ putStrLn rs
@@ -58,4 +58,4 @@ findRepos = globDir1 $ compile "**/.git"
 
 
 gitRemoveSuffix :: String -> String
-gitRemoveSuffix path = reverse $ drop 4 $ reverse path
+gitRemoveSuffix path = reverse $ drop 5 $ reverse path
