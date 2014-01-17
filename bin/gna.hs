@@ -27,7 +27,7 @@ discover [path] = do
   rcSaveRepos repos
 
 list :: [String] -> IO ()
-list [] = rcFile >>= \rc -> putStr rc
+list [] = rcRepos >>= \rs -> mapM_ putStrLn rs
 
 check :: [String] -> IO ()
 check [] = putStrLn "check"
@@ -48,6 +48,10 @@ rcSave content = do
 
 rcSaveRepos :: [String] -> IO ()
 rcSaveRepos rs = rcSave $ unlines rs
+
+rcRepos :: IO [String]
+rcRepos = rcFile >>= \rc -> return $ lines rc
+
 
 findRepos :: String -> IO [FilePath]
 findRepos = globDir1 $ compile "**/.git"
