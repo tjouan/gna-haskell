@@ -1,5 +1,7 @@
 #!/usr/bin/env runhaskell
 
+import Control.Monad (forM_)
+import System.Process (createProcess, cwd, proc, waitForProcess)
 import System.Environment (getArgs, getEnv)
 import System.FilePath.Glob (compile, globDir1)
 import System.IO (appendFile)
@@ -30,7 +32,21 @@ list :: [String] -> IO ()
 list [] = rcRepos >>= \rs -> mapM_ putStrLn rs
 
 check :: [String] -> IO ()
-check [] = putStrLn "check"
+check [] = do
+  rs <- rcRepos
+  forM_ rs $ \repo -> do
+    putStrLn $ unwords ["***", repo]
+    forM_ gitCommands $ \args -> do
+      (_, _, _, r) <- createProcess (proc git args) {
+        cwd = Just repo
+        }
+      waitForProcess r
+  where
+    git = "git"
+    gitCommands = [
+      ["symbolic-ref", "--short", "HEAD"],
+      ["status", "--porcelain"]
+      ]
 
 
 rcFilePath :: IO String
