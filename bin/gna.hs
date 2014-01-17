@@ -24,7 +24,7 @@ main = do
 discover :: [String] -> IO ()
 discover [path] = do
   repos <- findRepos path
-  saveRCFile $ unlines repos
+  rcSaveRepos repos
 
 list :: [String] -> IO ()
 list [] = rcFile >>= \rc -> putStr rc
@@ -41,10 +41,13 @@ rcFilePath = do
 rcFile :: IO String
 rcFile = rcFilePath >>= \p -> readFile p
 
-saveRCFile :: String -> IO ()
-saveRCFile content = do
+rcSave :: String -> IO ()
+rcSave content = do
   path <- rcFilePath
   writeFile path content
+
+rcSaveRepos :: [String] -> IO ()
+rcSaveRepos rs = rcSave $ unlines rs
 
 findRepos :: String -> IO [FilePath]
 findRepos = globDir1 $ compile "**/.git"
